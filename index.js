@@ -75,20 +75,20 @@ function createRock(x) {
      * If a rock collides with the DODGER,
      * we should call endGame()
      */
-      if (checkCollision()){
+     rock.style.top = `${top += 2}px`;
+     if (checkCollision(rock)){
         endGame();
       }
     /**
      * Otherwise, if the rock hasn't reached the bottom of
      * the GAME, we want to move it again.
      */
-     rock.style.top = `${top += 2}px`
 
-       if (top < 360) {
+       if (top < GAME_HEIGHT) {
          window.requestAnimationFrame(moveRock)
        } else {
          rock.remove();
-       }
+       }}
          /**
      * But if the rock *has* reached the bottom of the GAME,
      * we should remove the rock from the DOM
@@ -100,7 +100,7 @@ function createRock(x) {
   ROCKS.push(rock);
   // Finally, return the rock element you've created
   return rock;
-}}
+}
 
 /**
  * End the game by clearing `gameInterval`,
