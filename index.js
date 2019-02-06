@@ -54,13 +54,13 @@ function checkCollision(rock) {
 }
 
 function createRock(x) {
-  const rock = document.createElement('div')
+  const rock = document.createElement('div');
 
   rock.className = 'rock'
   rock.style.left = `${x}px`
 
   // Hmmm, why would we have used `var` here?
-  var top = 0
+  var top = 0;
 
   rock.style.top = top
 
@@ -89,7 +89,7 @@ function createRock(x) {
      */
      rock.style.top = `${top += 2}px`
 
-       if (top < 400) {
+       if (top < 360) {
          window.requestAnimationFrame(moveRock)
        } else {
          rock.remove();
@@ -121,7 +121,7 @@ function createRock(x) {
 function endGame() {
 clearInterval(gameInterval);
 ROCKS.forEach(function(rock) {rock.remove()});
-document.removeEventListener('keydown', moveDodger)
+document.removeEventListener('keydown', moveDodger);
 return alert ("YOU LOSE!");
 }
 
@@ -137,14 +137,14 @@ function moveDodger(e) {
    if (e.which === LEFT_ARROW) {
     e.preventDefault();
     e.stopPropagation();
-    moveDodgerLeft()
+    moveDodgerLeft();
   } else if (e.which === RIGHT_ARROW) {
    e.preventDefault();
    e.stopPropagation();
-   moveDodgerRight()
+   moveDodgerRight();
   } else if (e.which !== LEFT_ARROW && e.which !== RIGHT_ARROW) {
 
-    return null
+    return null;
 }
 
 function moveDodgerLeft() {
@@ -156,9 +156,9 @@ function moveDodgerLeft() {
    DODGER.style.left = `${left - 4}px`
 
      if (left > 0) {
-       window.requestAnimationFrame(step)
+       window.requestAnimationFrame(moveDodgerLeft)
      }
-   window.requestAnimationFrame(step)
+   window.requestAnimationFrame(moveDodgerLeft)
  }
 
 function moveDodgerRight() {
@@ -170,9 +170,9 @@ function moveDodgerRight() {
    DODGER.style.right = `${right - 4}px`
 
      if (right > 0) {
-       window.requestAnimationFrame(step)
+       window.requestAnimationFrame(moveDodgerRight)
      }
-   window.requestAnimationFrame(step)
+   window.requestAnimationFrame(moveDodgerRight)
  }
 
 /**
